@@ -1,9 +1,11 @@
 ﻿using System.Threading.Tasks;
+using DependencyRegister;
 using Repository.Context;
 using Repository.Contracts;
 
 namespace Repository
 {
+    [InjectableScoped]
     public class eComRepository : IeComRepository
     {
         private readonly eComContext _context;

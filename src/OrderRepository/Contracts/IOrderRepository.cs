@@ -12,7 +12,7 @@ namespace Repository.Contracts
 
         Task CreateOrder(Order order);
 
-        Task DeleteOrder(Order order);
+        Task DeleteOrder(int id);
 
         Task UpdateOrder(Order order);
     }
