@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -16,6 +16,7 @@
     <ProjectReference Include="..\DependencyRegister\DependencyRegister.csproj" />
     <ProjectReference Include="..\MediatrRegister\MediatrRegister.csproj" />
     <ProjectReference Include="..\OrderService\OrderService.csproj" />
+    <ProjectReference Include="..\ValidationRegister\ValidationRegister.csproj" />
   </ItemGroup>
 
 
