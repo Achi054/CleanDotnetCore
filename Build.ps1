@@ -6,6 +6,10 @@ Param(
     [string[]]$ScriptArgs
 )
 
+# Create tool manifest
+& dotnet new tool-manifest
+# Install Cake.Tool locally
+& dotnet tool install Cake.Tool
 # Restore Cake tool
 & dotnet tool restore
 

@@ -33,3 +33,7 @@ obj
 
 # Visual Studio files
 .vs
+.config
+
+# Artifact
+artifact
