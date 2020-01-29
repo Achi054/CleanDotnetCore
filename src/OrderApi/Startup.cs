@@ -1,5 +1,6 @@
 using AutoMapperRegister;
 using DependencyRegister;
+using MediatrRegister;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,8 @@ namespace OrderApi
             services.AddMappers(typeof(MapperConfiguratorAttribute));
 
             services.AddApplicationDependency();
+
+            services.AddMediater();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

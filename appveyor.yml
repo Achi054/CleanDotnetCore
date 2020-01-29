@@ -20,7 +20,7 @@ test:
   assemblies:
     - '**\*Tests.dll'
 build_script:
-  - ps: ./Build.ps1
+  - ps: ./appveyor-build.ps1
 install:
   - ps: Set-Service wuauserv -StartupType Manual
   - cinst -y php

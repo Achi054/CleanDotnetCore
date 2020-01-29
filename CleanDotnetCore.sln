@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderApi", "src\OrderApi\Or
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{4E226B1C-AE7C-4F04-AD7A-10574CC97247}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapperRegister", "src\AutoMapper\AutoMapperRegister.csproj", "{38888A25-6B84-4103-B879-8317E03FF07F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMapperRegister", "src\AutoMapper\AutoMapperRegister.csproj", "{38888A25-6B84-4103-B879-8317E03FF07F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyRegister", "src\DependencyRegister\DependencyRegister.csproj", "{9E087456-DD13-4A13-B116-DAE40C3F018F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyRegister", "src\DependencyRegister\DependencyRegister.csproj", "{9E087456-DD13-4A13-B116-DAE40C3F018F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatrRegister", "src\MediatrRegister\MediatrRegister.csproj", "{A96C1630-953C-4C0A-8341-3824307C88F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{9E087456-DD13-4A13-B116-DAE40C3F018F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E087456-DD13-4A13-B116-DAE40C3F018F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E087456-DD13-4A13-B116-DAE40C3F018F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A96C1630-953C-4C0A-8341-3824307C88F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A96C1630-953C-4C0A-8341-3824307C88F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A96C1630-953C-4C0A-8341-3824307C88F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A96C1630-953C-4C0A-8341-3824307C88F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{30FD81D3-1DAD-45A5-AE6D-B10CD61F52EC} = {CDCA6E83-F39C-4DD8-98FB-274629AB3AA5}
 		{38888A25-6B84-4103-B879-8317E03FF07F} = {4E226B1C-AE7C-4F04-AD7A-10574CC97247}
 		{9E087456-DD13-4A13-B116-DAE40C3F018F} = {4E226B1C-AE7C-4F04-AD7A-10574CC97247}
+		{A96C1630-953C-4C0A-8341-3824307C88F3} = {4E226B1C-AE7C-4F04-AD7A-10574CC97247}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B520D83-9084-4940-97F3-B313F785B971}

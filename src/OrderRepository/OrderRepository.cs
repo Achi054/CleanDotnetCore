@@ -13,7 +13,7 @@ namespace OrderRepository
     public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
         public OrderRepository(eComContext context)
-            : base(context) { }
+            : base(context) => context.Database.EnsureCreated();
 
         public async Task CreateOrder(Order order) => await Task.Run(() => Create(order));
 

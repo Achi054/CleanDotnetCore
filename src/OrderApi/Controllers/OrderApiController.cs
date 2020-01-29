@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Domain;
 using MediatR;
@@ -26,7 +27,7 @@ namespace OrderApi.Controllers
         {
             var query = new GetAllOrdersQuery();
             var result = await _mediator.Send(query);
-            return Ok(_mapper.Map<OrderDetails>(result));
+            return Ok(_mapper.Map<IEnumerable<OrderDetails>>(result));
         }
 
         [HttpGet("{id}")]
