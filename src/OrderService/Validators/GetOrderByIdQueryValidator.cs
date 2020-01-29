@@ -5,10 +5,6 @@ namespace OrderService.Validators
 {
     public class GetOrderByIdQueryValidator : AbstractValidator<GetOrderByIdQuery>
     {
-        public GetOrderByIdQueryValidator()
-        {
-            RuleFor(x => x.OrderId)
-                .NotEmpty();
-        }
+        public GetOrderByIdQueryValidator() => RuleFor(x => x.OrderId).NotEmpty();
     }
 }
