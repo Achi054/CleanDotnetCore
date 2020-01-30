@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationRegister", "src\V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheRegister", "src\CacheRegister\CacheRegister.csproj", "{0AD7B7C0-A88C-4279-AF14-3226581DC8F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{CE872330-23A9-46A0-98FD-DFF95FD54097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmark", "src\Benchmark\Benchmark.csproj", "{67873273-6F9A-4FBD-BFD3-E8EB4167744A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,10 @@ Global
 		{0AD7B7C0-A88C-4279-AF14-3226581DC8F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AD7B7C0-A88C-4279-AF14-3226581DC8F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AD7B7C0-A88C-4279-AF14-3226581DC8F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67873273-6F9A-4FBD-BFD3-E8EB4167744A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67873273-6F9A-4FBD-BFD3-E8EB4167744A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67873273-6F9A-4FBD-BFD3-E8EB4167744A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67873273-6F9A-4FBD-BFD3-E8EB4167744A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +95,7 @@ Global
 		{A96C1630-953C-4C0A-8341-3824307C88F3} = {4E226B1C-AE7C-4F04-AD7A-10574CC97247}
 		{EE4D9566-FD70-42F3-AEC1-D395078E339A} = {4E226B1C-AE7C-4F04-AD7A-10574CC97247}
 		{0AD7B7C0-A88C-4279-AF14-3226581DC8F6} = {4E226B1C-AE7C-4F04-AD7A-10574CC97247}
+		{67873273-6F9A-4FBD-BFD3-E8EB4167744A} = {CE872330-23A9-46A0-98FD-DFF95FD54097}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B520D83-9084-4940-97F3-B313F785B971}
