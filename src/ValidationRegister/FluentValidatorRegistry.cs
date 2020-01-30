@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using OrderService.PipelineBehaviors;
 using OrderService.Validators;
 
 namespace ValidationRegister
@@ -12,7 +11,12 @@ namespace ValidationRegister
         {
             services.AddValidatorsFromAssembly(typeof(GetOrderByIdQueryValidator).Assembly);
 
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.Scan(scan => scan
+                .FromAssemblyOf<GetOrderByIdQueryValidator>()
+                .AddClasses(classes => classes.AssignableTo(typeof(IPipelineBehavior<,>)))
+                .AsMatchingInterface()
+                .WithTransientLifetime()
+            );
         }
     }
 }
