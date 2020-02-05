@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -46,7 +47,8 @@ namespace OAuthServer
             string grant_type,
             string code,
             string redirect_uri,
-            string client_id)
+            string client_id,
+            string refresh_token)
         {
             var claims = new[]
             {
@@ -61,7 +63,7 @@ namespace OAuthServer
                 TokenConstants.Issuer,
                 TokenConstants.Audience,
                 claims, DateTime.Now,
-                DateTime.Now.AddHours(1),
+                grant_type == "refresh_token" ? DateTime.Now.AddMinutes(5) : DateTime.Now.AddMilliseconds(1),
                 signedCredential);
 
             var jsonToken = new JwtSecurityTokenHandler().WriteToken(jwtToken);
@@ -70,7 +72,8 @@ namespace OAuthServer
             {
                 access_token = jsonToken,
                 token_type = "Bearer",
-                raw_claim = "OAuth Application"
+                raw_claim = "OAuth Application",
+                refresh_token = "refresh_token_that_needs_to_be_passed_to_get_new_authorization_token"
             };
 
             var serializedJsonObject = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(responseObject));
@@ -78,6 +81,14 @@ namespace OAuthServer
             await Response.Body.WriteAsync(serializedJsonObject, 0, serializedJsonObject.Length);
 
             return Redirect(redirect_uri);
+        }
+
+        [Authorize]
+        public IActionResult Validate()
+        {
+            if (HttpContext.Request.Query.ContainsKey("access_token"))
+                return Ok();
+            return BadRequest();
         }
     }
 }

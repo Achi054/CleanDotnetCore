@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthServer", "src\OAuthSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthClient", "src\OAuthClient\OAuthClient.csproj", "{BE127B31-1412-4CC2-849D-EC02B766596F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthApi", "src\OAuthApi\OAuthApi.csproj", "{51925821-0321-455B-9205-CF59FEEB1464}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +121,10 @@ Global
 		{BE127B31-1412-4CC2-849D-EC02B766596F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE127B31-1412-4CC2-849D-EC02B766596F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE127B31-1412-4CC2-849D-EC02B766596F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51925821-0321-455B-9205-CF59FEEB1464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51925821-0321-455B-9205-CF59FEEB1464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51925821-0321-455B-9205-CF59FEEB1464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51925821-0321-455B-9205-CF59FEEB1464}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,6 +147,7 @@ Global
 		{49CAF5B6-AA9D-4454-A861-C6CA2FB9BCB8} = {CDCA6E83-F39C-4DD8-98FB-274629AB3AA5}
 		{28C05419-FA1E-4012-B4F5-FF14356F3DB4} = {49CAF5B6-AA9D-4454-A861-C6CA2FB9BCB8}
 		{BE127B31-1412-4CC2-849D-EC02B766596F} = {49CAF5B6-AA9D-4454-A861-C6CA2FB9BCB8}
+		{51925821-0321-455B-9205-CF59FEEB1464} = {49CAF5B6-AA9D-4454-A861-C6CA2FB9BCB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B520D83-9084-4940-97F3-B313F785B971}
