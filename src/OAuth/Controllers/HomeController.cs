@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using OAuth.Constants;
 
-namespace AuthenticationAndAuthorization.Controllers
+namespace OAuth.Controllers
 {
     public class HomeController : Controller
     {
