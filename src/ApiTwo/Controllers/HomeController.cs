@@ -12,7 +12,7 @@ namespace ApiTwo.Controllers
         public HomeController(IHttpClientFactory httpClientFactory)
             => this.httpClientFactory = httpClientFactory;
 
-        [Route("/")]
+        [Route("/index")]
         public async Task<IActionResult> Index()
         {
             // retrieve Token

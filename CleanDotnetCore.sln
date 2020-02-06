@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiOne", "src\ApiOne\ApiOne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTwo", "src\ApiTwo\ApiTwo.csproj", "{F18384FC-0C31-4A37-89EC-50EC941BDF38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcClient", "src\MvcClient\MvcClient.csproj", "{F730EFFE-AC76-4DF9-929D-F0979861CB01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,6 +147,10 @@ Global
 		{F18384FC-0C31-4A37-89EC-50EC941BDF38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F18384FC-0C31-4A37-89EC-50EC941BDF38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F18384FC-0C31-4A37-89EC-50EC941BDF38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F730EFFE-AC76-4DF9-929D-F0979861CB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F730EFFE-AC76-4DF9-929D-F0979861CB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F730EFFE-AC76-4DF9-929D-F0979861CB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F730EFFE-AC76-4DF9-929D-F0979861CB01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -172,6 +178,7 @@ Global
 		{207042A5-8107-4C7D-8A8F-3605DB366271} = {461FBB49-3384-4354-AA0D-B17D5963A686}
 		{AB6F8084-7BD7-4057-9A16-DCE4970FE872} = {461FBB49-3384-4354-AA0D-B17D5963A686}
 		{F18384FC-0C31-4A37-89EC-50EC941BDF38} = {461FBB49-3384-4354-AA0D-B17D5963A686}
+		{F730EFFE-AC76-4DF9-929D-F0979861CB01} = {461FBB49-3384-4354-AA0D-B17D5963A686}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B520D83-9084-4940-97F3-B313F785B971}
