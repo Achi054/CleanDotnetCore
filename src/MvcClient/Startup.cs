@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,8 @@ namespace MvcClient
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddHttpClient();
 
             services.AddAuthentication(configureOptions =>
                     {
@@ -27,6 +30,14 @@ namespace MvcClient
                         configureOptions.SaveTokens = true;
 
                         configureOptions.ResponseType = "code";
+
+                        configureOptions.GetClaimsFromUserInfoEndpoint = true;
+
+                        configureOptions.ClaimActions.MapUniqueJsonKey("raw.pubclaim", "rc.pubclaim");
+
+                        configureOptions.Scope.Add("rc_pub_scope");
+                        configureOptions.Scope.Add("ApiOne");
+                        configureOptions.Scope.Add("offline_access");
                     });
         }
 

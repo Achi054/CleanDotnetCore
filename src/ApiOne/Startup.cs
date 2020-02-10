@@ -11,6 +11,12 @@ namespace ApiOne
         {
             services.AddControllers();
 
+            services.AddCors(options => options.AddPolicy("AllowAll", p =>
+                p.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            ));
+
             services.AddAuthentication("Identity")
                     .AddJwtBearer("Identity", configureOptions =>
                     {
@@ -25,6 +31,8 @@ namespace ApiOne
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("AllowAll");
 
             app.UseRouting();
 

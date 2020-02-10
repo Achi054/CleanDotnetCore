@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +16,10 @@ namespace IdentityServer
             {
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-                userManager.CreateAsync(new IdentityUser("achi"), "fabregas054").GetAwaiter().GetResult();
+                var user = new IdentityUser("achi");
+                userManager.CreateAsync(user, "fabregas054").GetAwaiter().GetResult();
+
+                userManager.AddClaimAsync(user, new Claim("rc.pubclaim", "Sujith_Acharya")).GetAwaiter().GetResult();
             }
 
             host.Run();

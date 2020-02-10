@@ -11,10 +11,15 @@ namespace IdentityServer
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResource { Name = "rc_pub_scope", UserClaims = new [] { "rc.pubclaim" } }
             };
 
         public static IEnumerable<ApiResource> GetApiResources()
-            => new[] { new ApiResource("ApiOne"), new ApiResource("ApiTwo") };
+            => new[]
+            {
+                new ApiResource("ApiOne", new[] { "rc.pubclaim" }),
+                new ApiResource("ApiTwo")
+            };
 
         public static IEnumerable<Client> GetClients()
             => new[] {
@@ -43,9 +48,34 @@ namespace IdentityServer
                         "ApiTwo",
                         OidcConstants.StandardScopes.OpenId,
                         OidcConstants.StandardScopes.Profile,
+                        "rc_pub_scope"
+                    },
+
+                    AllowOfflineAccess = true,
+
+                    RequireConsent = false,
+                },
+                new Client
+                {
+                    ClientId = "054_js",
+                    ClientSecrets = new[] { new Secret("sujith_acharya_js".ToSha256()) },
+
+                    // user-identity communication
+                    AllowedGrantTypes = GrantTypes.Implicit,
+
+                    RedirectUris = new[] { "https://localhost:44340/home/signin" },
+
+                    AllowedCorsOrigins = new[] { "https://localhost:44340" },
+
+                    AllowedScopes = new[] {
+                        "ApiOne",
+                        OidcConstants.StandardScopes.OpenId,
+                        "rc_pub_scope",
                     },
 
                     RequireConsent = false,
+
+                    AllowAccessTokensViaBrowser = true,
                 }
             };
     }

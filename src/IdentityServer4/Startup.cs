@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -10,9 +11,16 @@ namespace IdentityServer
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration) => _configuration = configuration;
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(option => option.UseInMemoryDatabase("AppDb"));
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
+            var migrationsAssembly = typeof(Startup).Assembly.GetName().Name;
+
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
             services
                 .AddIdentity<IdentityUser, IdentityRole>(option =>
@@ -36,6 +44,23 @@ namespace IdentityServer
                     .AddInMemoryApiResources(Configuration.GetApiResources())
                     .AddInMemoryIdentityResources(Configuration.GetIdentityResources())
                     .AddInMemoryClients(Configuration.GetClients())
+                    //.AddConfigurationStore(options =>
+                    //{
+                    //    options.ConfigureDbContext = builder =>
+                    //        builder.UseSqlServer(connectionString,
+                    //            sql => sql.MigrationsAssembly(migrationsAssembly));
+                    //})
+                    //// this adds the operational data from DB (codes, tokens, consents)
+                    //.AddOperationalStore(options =>
+                    //{
+                    //    options.ConfigureDbContext = builder =>
+                    //        builder.UseSqlServer(connectionString,
+                    //            sql => sql.MigrationsAssembly(migrationsAssembly));
+
+                    //    // this enables automatic token cleanup. this is optional.
+                    //    options.EnableTokenCleanup = true;
+                    //    options.TokenCleanupInterval = 30;
+                    //})
                     .AddDeveloperSigningCredential();
 
             services.AddControllersWithViews();
