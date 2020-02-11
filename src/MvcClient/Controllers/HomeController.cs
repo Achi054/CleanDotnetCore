@@ -16,6 +16,8 @@ namespace MvcClient.Controllers
 
         public IActionResult Index() => View();
 
+        public IActionResult Logout() => SignOut("authCookie", "oidc");
+
         [Authorize]
         public async Task<IActionResult> Secret()
         {

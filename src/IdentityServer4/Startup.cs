@@ -37,30 +37,31 @@ namespace IdentityServer
             {
                 configure.Cookie.Name = "Identity.Cookie";
                 configure.LoginPath = "/Home/Login";
+                configure.LogoutPath = "/Home/Logout";
             });
 
             services.AddIdentityServer()
                     .AddAspNetIdentity<IdentityUser>()
-                    .AddInMemoryApiResources(Configuration.GetApiResources())
-                    .AddInMemoryIdentityResources(Configuration.GetIdentityResources())
-                    .AddInMemoryClients(Configuration.GetClients())
-                    //.AddConfigurationStore(options =>
-                    //{
-                    //    options.ConfigureDbContext = builder =>
-                    //        builder.UseSqlServer(connectionString,
-                    //            sql => sql.MigrationsAssembly(migrationsAssembly));
-                    //})
-                    //// this adds the operational data from DB (codes, tokens, consents)
-                    //.AddOperationalStore(options =>
-                    //{
-                    //    options.ConfigureDbContext = builder =>
-                    //        builder.UseSqlServer(connectionString,
-                    //            sql => sql.MigrationsAssembly(migrationsAssembly));
+                    //.AddInMemoryApiResources(Configuration.GetApiResources())
+                    //.AddInMemoryIdentityResources(Configuration.GetIdentityResources())
+                    //.AddInMemoryClients(Configuration.GetClients())
+                    .AddConfigurationStore(options =>
+                    {
+                        options.ConfigureDbContext = builder =>
+                            builder.UseSqlServer(connectionString,
+                                sql => sql.MigrationsAssembly(migrationsAssembly));
+                    })
+                    // this adds the operational data from DB (codes, tokens, consents)
+                    .AddOperationalStore(options =>
+                    {
+                        options.ConfigureDbContext = builder =>
+                            builder.UseSqlServer(connectionString,
+                                sql => sql.MigrationsAssembly(migrationsAssembly));
 
-                    //    // this enables automatic token cleanup. this is optional.
-                    //    options.EnableTokenCleanup = true;
-                    //    options.TokenCleanupInterval = 30;
-                    //})
+                        // this enables automatic token cleanup. this is optional.
+                        options.EnableTokenCleanup = true;
+                        options.TokenCleanupInterval = 30;
+                    })
                     .AddDeveloperSigningCredential();
 
             services.AddControllersWithViews();

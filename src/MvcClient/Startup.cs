@@ -33,6 +33,8 @@ namespace MvcClient
 
                         configureOptions.GetClaimsFromUserInfoEndpoint = true;
 
+                        configureOptions.SignedOutCallbackPath = "/Home/Index";
+
                         configureOptions.ClaimActions.MapUniqueJsonKey("raw.pubclaim", "rc.pubclaim");
 
                         configureOptions.Scope.Add("rc_pub_scope");

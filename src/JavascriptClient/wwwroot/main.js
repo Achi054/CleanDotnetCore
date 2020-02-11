@@ -3,6 +3,7 @@
     authority: "https://localhost:44326/",
     client_id: "054_js",
     redirect_uri: "https://localhost:44340/home/signin",
+    post_logout_redirect_uri: "https://localhost:44340/home/index", 
     response_type: "id_token token",
     scope: "openid ApiOne rc_pub_scope"
 };
@@ -11,6 +12,10 @@ var userManager = new Oidc.UserManager(configuration);
 
 var signIn = function () {
     userManager.signinRedirect();
+};
+
+var signOut = function () {
+    userManager.signoutRedirect();
 };
 
 userManager.getUser().then(user => {
