@@ -9,7 +9,7 @@ namespace OrderService.Handlers
 {
     public class GetOrderByQueryHandler : BaseRequestHandler, IRequestHandler<GetOrderByIdQuery, Order>
     {
-        public GetOrderByQueryHandler(IeComRepository eComRepository)
+        public GetOrderByQueryHandler(IeComRepository<Order> eComRepository)
             : base(eComRepository)
         {
         }

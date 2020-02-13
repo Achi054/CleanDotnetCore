@@ -9,7 +9,7 @@ namespace OrderService.Handlers
 {
     public class CreateOrderCommandHandler : BaseRequestHandler, IRequestHandler<CreateOrderCommand, Order>
     {
-        public CreateOrderCommandHandler(IeComRepository eComRepository)
+        public CreateOrderCommandHandler(IeComRepository<Order> eComRepository)
             : base(eComRepository)
         {
         }

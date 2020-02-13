@@ -5,6 +5,7 @@ using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OrderApi.Contracts.V1;
 using OrderApi.Models;
 using OrderService.Commands;
 using OrderService.Queries;
@@ -12,7 +13,6 @@ using OrderService.Queries;
 namespace OrderApi.Controllers
 {
     [ApiController]
-    [Route("api/order")]
     public class OrderApiController : ControllerBase
     {
         private readonly ILogger<OrderApiController> _logger;
@@ -22,7 +22,7 @@ namespace OrderApi.Controllers
         public OrderApiController(ILogger<OrderApiController> logger, IMediator mediator, IMapper mapper)
             => (_logger, _mediator, _mapper) = (logger, mediator, mapper);
 
-        [HttpGet]
+        [HttpGet(ApiRoutes.Order.Get)]
         public async Task<IActionResult> Get()
         {
             var query = new GetAllOrdersQuery();
@@ -30,7 +30,7 @@ namespace OrderApi.Controllers
             return Ok(_mapper.Map<IEnumerable<OrderDetails>>(result));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet(ApiRoutes.Order.GetById)]
         public async Task<IActionResult> Get(int id)
         {
             var query = new GetOrderByIdQuery(id);
@@ -42,7 +42,7 @@ namespace OrderApi.Controllers
             return Ok(_mapper.Map<OrderDetails>(result));
         }
 
-        [HttpPost("create")]
+        [HttpPost(ApiRoutes.Order.Create)]
         public async Task<IActionResult> Create(OrderDetails order)
         {
             var query = new CreateOrderCommand(_mapper.Map<Order>(order));
@@ -50,7 +50,7 @@ namespace OrderApi.Controllers
             return CreatedAtAction("Get", new { id = result.Id }, result);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut(ApiRoutes.Order.Update)]
         public async Task<IActionResult> Update(int id, OrderDetails order)
         {
             if (id != order.Id)
@@ -61,7 +61,7 @@ namespace OrderApi.Controllers
             return Ok(_mapper.Map<OrderDetails>(result));
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete(ApiRoutes.Order.Delete)]
         public async Task<IActionResult> Delete(int id)
         {
             var query = new DeleteOrderCommand(id);

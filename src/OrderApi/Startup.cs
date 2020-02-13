@@ -8,7 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Repository.Context;
+using OrderApi.Options;
+using Repository.EntityFramework.Context;
 using ValidationRegister;
 
 namespace OrderApi
@@ -35,6 +36,8 @@ namespace OrderApi
             services.AddMediater();
 
             services.AddValidators();
+
+            services.AddCosmosDb(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,10 +48,13 @@ namespace OrderApi
 
             app.UseHttpsRedirection();
 
-            app.UseSwagger();
+            var swaggerOptions = new SwaggerOptions();
+            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
+
+            app.UseSwagger(options => options.RouteTemplate = swaggerOptions.JsonEndpoint);
             app.UseSwaggerUI(opts =>
             {
-                opts.SwaggerEndpoint("/swagger/v1/swagger.json", "eCommerce API");
+                opts.SwaggerEndpoint(swaggerOptions.UriEndpoint, swaggerOptions.Description);
                 opts.RoutePrefix = string.Empty;
             });
 

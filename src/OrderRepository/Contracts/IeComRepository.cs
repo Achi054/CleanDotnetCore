@@ -2,9 +2,9 @@
 
 namespace Repository.Contracts
 {
-    public interface IeComRepository
+    public interface IeComRepository<T> where T : class
     {
-        IOrderRepository Order { get; }
+        IOrderRepository<T> Order { get; }
 
         Task SaveAsync();
     }

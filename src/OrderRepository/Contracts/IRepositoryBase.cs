@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Repository.Contracts
 {
     public interface IRepositoryBase<T>
     {
-        IQueryable<T> FindAll();
+        Task<IQueryable<T>> FindAll();
 
-        IQueryable<T> FindAllByCondition(Expression<Func<T, bool>> expression);
+        Task<IQueryable<T>> FindAllByCondition(Expression<Func<T, bool>> expression);
 
-        void Create(T entity);
+        Task Create(T entity);
 
-        void Update(T entity);
+        Task Update(T entity);
 
-        void Delete(T entity);
+        Task Delete(T entity);
     }
 }

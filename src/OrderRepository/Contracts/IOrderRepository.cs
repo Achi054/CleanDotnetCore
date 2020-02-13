@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Domain;
 
 namespace Repository.Contracts
 {
-    public interface IOrderRepository : IRepositoryBase<Order>
+    public interface IOrderRepository<T> : IRepositoryBase<T> where T : class
     {
-        Task<IEnumerable<Order>> GetAllOrder();
+        Task<IEnumerable<T>> GetAllOrder();
 
-        Task<Order> GetOrderById(int id);
+        Task<T> GetOrderById(int id);
 
-        Task CreateOrder(Order order);
+        Task CreateOrder(T order);
 
         Task DeleteOrder(int id);
 
-        Task UpdateOrder(Order order);
+        Task UpdateOrder(T order);
     }
 }

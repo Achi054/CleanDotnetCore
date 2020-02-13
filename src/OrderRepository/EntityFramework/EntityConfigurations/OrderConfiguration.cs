@@ -3,7 +3,7 @@ using Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Repository.EntityConfigurations
+namespace Repository.EntityFramework.EntityConfigurations
 {
     internal sealed class OrderConfiguration : IEntityTypeConfiguration<Order>
     {

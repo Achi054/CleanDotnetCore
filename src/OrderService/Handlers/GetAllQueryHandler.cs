@@ -10,7 +10,7 @@ namespace OrderService.Handlers
 {
     public class GetAllQueryHandler : BaseRequestHandler, IRequestHandler<GetAllOrdersQuery, IEnumerable<Order>>
     {
-        public GetAllQueryHandler(IeComRepository eComRepository)
+        public GetAllQueryHandler(IeComRepository<Order> eComRepository)
             : base(eComRepository)
         {
         }

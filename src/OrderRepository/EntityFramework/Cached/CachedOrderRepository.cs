@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain;
-using Repository.Context;
 using Repository.Contracts;
+using Repository.EntityFramework.Context;
 
-namespace Repository.Cached
+namespace Repository.EntityFramework.Cached
 {
-    public class CachedOrderRepository : RepositoryBase<Order>, IOrderRepository
+    public class CachedOrderRepository : RepositoryBase<Order>, IOrderRepository<Order>
     {
-        private readonly IOrderRepository _repository;
+        private readonly IOrderRepository<Order> _repository;
         private ConcurrentDictionary<int, Order> cachedOrders = new ConcurrentDictionary<int, Order>();
 
-        public CachedOrderRepository(eComContext context, IOrderRepository orderRepository)
+        public CachedOrderRepository(eComContext context, IOrderRepository<Order> orderRepository)
             : base(context) => _repository = orderRepository;
 
         public async Task CreateOrder(Order order) => await _repository.CreateOrder(order);

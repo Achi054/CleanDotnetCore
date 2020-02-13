@@ -1,8 +1,8 @@
 ﻿using Domain;
 using Microsoft.EntityFrameworkCore;
-using Repository.EntityConfigurations;
+using Repository.EntityFramework.EntityConfigurations;
 
-namespace Repository.Context
+namespace Repository.EntityFramework.Context
 {
     public class eComContext : DbContext
     {
