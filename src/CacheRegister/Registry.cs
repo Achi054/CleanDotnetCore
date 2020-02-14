@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.EFCoreEntities;
 using Microsoft.Extensions.DependencyInjection;
 using Repository.Contracts;
 using Repository.EntityFramework.Cached;

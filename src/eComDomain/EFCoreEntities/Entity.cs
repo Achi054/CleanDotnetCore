@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain
+namespace Domain.EFCoreEntities
 {
     public abstract class Entity
     {

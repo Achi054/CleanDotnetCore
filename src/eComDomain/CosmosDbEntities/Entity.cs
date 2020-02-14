@@ -1,7 +1,7 @@
 ﻿using System;
 using Cosmonaut.Attributes;
 
-namespace Repository.CosmosDb.Entities
+namespace Domain.CosmosDb.Entities
 {
     public abstract class Entity
     {

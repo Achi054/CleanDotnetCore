@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Domain;
+using Domain.EFCoreEntities;
 using Repository.Contracts;
 using Repository.EntityFramework.Context;
 

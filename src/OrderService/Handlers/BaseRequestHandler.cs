@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.EFCoreEntities;
 using Repository.Contracts;
 
 namespace OrderService.Handlers

@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.EFCoreEntities;
 using Microsoft.EntityFrameworkCore;
 using Repository.EntityFramework.EntityConfigurations;
 

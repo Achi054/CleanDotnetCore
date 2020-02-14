@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.EFCoreEntities;
 using MediatR;
 
 namespace OrderService.Queries

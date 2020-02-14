@@ -1,8 +1,5 @@
-﻿using Cosmonaut.Attributes;
-
-namespace Repository.CosmosDb.Entities
+﻿namespace Domain.EFCoreEntities
 {
-    [CosmosCollection("Order")]
     public class Order : Entity
     {
         public string Name { get; set; }

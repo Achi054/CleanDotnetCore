@@ -1,6 +1,6 @@
 ﻿using Cosmonaut;
 using Cosmonaut.Extensions.Microsoft.DependencyInjection;
-using Domain;
+using Domain.CosmosDb.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

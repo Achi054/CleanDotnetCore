@@ -1,5 +1,8 @@
-﻿namespace Domain
+﻿using Cosmonaut.Attributes;
+
+namespace Domain.CosmosDb.Entities
 {
+    [CosmosCollection("Order")]
     public class Order : Entity
     {
         public string Name { get; set; }

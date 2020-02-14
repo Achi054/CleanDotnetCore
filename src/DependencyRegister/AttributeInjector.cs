@@ -12,16 +12,16 @@ namespace DependencyRegister
                         scan.FromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
                             // Scan classes with InjectableTransient Attribute 
                             .AddClasses(classes => classes.Where(x => x.IsClass && x.CustomAttributes.Any(y => y.AttributeType == typeof(InjectableTransientAttribute))))
-                            .AsMatchingInterface()
+                            .AsImplementedInterfaces()
                             .WithTransientLifetime()
                             // Scan classes with InjectableScoped Attribute 
                             .AddClasses(classes => classes.Where(x => x.IsClass && x.CustomAttributes.Any(y => y.AttributeType == typeof(InjectableScopedAttribute))))
-                            .AsMatchingInterface()
-                            .WithTransientLifetime()
+                            .AsImplementedInterfaces()
+                            .WithScopedLifetime()
                             // Scan classes with InjectableSingleton Attribute 
                             .AddClasses(classes => classes.Where(x => x.IsClass && x.CustomAttributes.Any(y => y.AttributeType == typeof(InjectableSingletonAttribute))))
-                            .AsMatchingInterface()
-                            .WithTransientLifetime());
+                            .AsImplementedInterfaces()
+                            .WithSingletonLifetime());
         }
     }
 }

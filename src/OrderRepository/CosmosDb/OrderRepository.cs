@@ -3,8 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cosmonaut;
 using DependencyRegister;
+using Domain.CosmosDb.Entities;
 using Repository.Contracts;
-using Repository.CosmosDb.Entities;
 
 namespace Repository.CosmosDb
 {

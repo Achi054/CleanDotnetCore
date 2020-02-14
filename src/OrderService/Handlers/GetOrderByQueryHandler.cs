@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Domain;
+using Domain.EFCoreEntities;
 using MediatR;
 using OrderService.Queries;
 using Repository.Contracts;

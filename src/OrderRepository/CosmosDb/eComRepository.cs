@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DependencyRegister;
+using Domain.CosmosDb.Entities;
 using Repository.Contracts;
-using Repository.CosmosDb.Entities;
 using Repository.EntityFramework.Context;
 
 namespace Repository.CosmosDb

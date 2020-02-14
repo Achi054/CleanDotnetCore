@@ -8,6 +8,7 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
   </ItemGroup>
 
@@ -16,6 +17,7 @@
     <ProjectReference Include="..\DependencyRegister\DependencyRegister.csproj" />
     <ProjectReference Include="..\MediatrRegister\MediatrRegister.csproj" />
     <ProjectReference Include="..\OrderService\OrderService.csproj" />
+    <ProjectReference Include="..\SecurityRegister\SwaggerRegister.csproj" />
     <ProjectReference Include="..\ValidationRegister\ValidationRegister.csproj" />
   </ItemGroup>
 

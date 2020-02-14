@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Domain;
+using Domain.EFCoreEntities;
+using IdentityServer.Contracts.V1;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using OrderApi.Contracts.V1;
 using OrderApi.Models;
 using OrderService.Commands;
 using OrderService.Queries;
@@ -13,6 +15,7 @@ using OrderService.Queries;
 namespace OrderApi.Controllers
 {
     [ApiController]
+    [Authorize(JwtBearerDefaults.AuthenticationScheme)]
     public class OrderApiController : ControllerBase
     {
         private readonly ILogger<OrderApiController> _logger;

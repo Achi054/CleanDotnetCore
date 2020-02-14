@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using OrderApi.Options;
 using Repository.EntityFramework.Context;
+using SecurityRegister;
 using ValidationRegister;
 
 namespace OrderApi
@@ -23,7 +23,9 @@ namespace OrderApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSwaggerGen(opts => opts.SwaggerDoc("v1", new OpenApiInfo { Title = "eCommerce API", Version = "V1" }));
+            services.AddHttpClient();
+
+            services.AddSwagger();
 
             services.AddControllers();
 
@@ -55,11 +57,11 @@ namespace OrderApi
             app.UseSwaggerUI(opts =>
             {
                 opts.SwaggerEndpoint(swaggerOptions.UriEndpoint, swaggerOptions.Description);
-                opts.RoutePrefix = string.Empty;
             });
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

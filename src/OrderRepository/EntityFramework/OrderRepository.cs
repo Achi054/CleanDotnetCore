@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DependencyRegister;
-using Domain;
+using Domain.EFCoreEntities;
 using Repository.Contracts;
 using Repository.EntityFramework;
 using Repository.EntityFramework.Context;
