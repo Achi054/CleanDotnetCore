@@ -1,6 +1,6 @@
-﻿namespace IdentityServer.Contracts.V1.ResponseModel
+﻿namespace IdentityServer.Contracts.V1.RequestModel
 {
-    public class AuthSuccessResponse
+    public class RefreshTokenRequest
     {
         public string Token { get; set; }
         public string RefreshToken { get; set; }

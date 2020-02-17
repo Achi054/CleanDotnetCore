@@ -2,12 +2,10 @@
 
 namespace IdentityServer.Contracts.V1.RequestModel
 {
-    public class UserRegistrationRequest
+    public class UserLoginRequest
     {
         [EmailAddress]
         public string Email { get; set; }
-
-        public string Name { get; set; }
 
         public string Password { get; set; }
     }

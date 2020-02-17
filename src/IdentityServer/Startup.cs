@@ -37,6 +37,17 @@ namespace IdentityServer
             Configuration.Bind(nameof(JwtSettings), jwtSettings);
             services.AddSingleton(jwtSettings);
 
+            var tokenParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
+                RequireExpirationTime = false,
+                ValidateLifetime = true
+            };
+            services.AddSingleton(tokenParameters);
+
             services.AddAuthentication(configureOptions =>
                 {
                     configureOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,15 +57,7 @@ namespace IdentityServer
                 .AddJwtBearer(configureOptions =>
                 {
                     configureOptions.SaveToken = true;
-                    configureOptions.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
-                        RequireExpirationTime = false,
-                        ValidateLifetime = true
-                    };
+                    configureOptions.TokenValidationParameters = tokenParameters;
                 });
 
             services.AddSwagger();

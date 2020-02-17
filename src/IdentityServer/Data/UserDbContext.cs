@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using IdentityServer.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityServer.Data
@@ -7,5 +8,7 @@ namespace IdentityServer.Data
     {
         public UserDbContext(DbContextOptions<UserDbContext> context)
             : base(context) { }
+
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }
