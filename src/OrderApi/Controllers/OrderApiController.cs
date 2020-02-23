@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Domain.EFCoreEntities;
-using IdentityServer.Contracts.V1;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OrderApi.Contracts.V1;
 using OrderApi.Models;
 using OrderService.Commands;
 using OrderService.Queries;

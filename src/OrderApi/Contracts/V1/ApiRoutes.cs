@@ -1,4 +1,4 @@
-﻿namespace IdentityServer.Contracts.V1
+﻿namespace OrderApi.Contracts.V1
 {
     public class ApiRoutes
     {
