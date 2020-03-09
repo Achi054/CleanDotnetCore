@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
 namespace SecurityRegister
@@ -18,10 +19,18 @@ namespace SecurityRegister
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
                 };
-                var securityRequirement = new OpenApiSecurityRequirement();
-                securityRequirement.Add(security, new string[0]);
-
                 opts.AddSecurityDefinition("Bearer", security);
+
+                var securityRequirement = new OpenApiSecurityRequirement {
+                    {
+                        new OpenApiSecurityScheme {
+                            Reference = new OpenApiReference {
+                                Id = "Bearer",
+                                Type = ReferenceType.SecurityScheme,
+                            }
+                        }, Array.Empty<string>()
+                    }
+                };
                 opts.AddSecurityRequirement(securityRequirement);
             });
         }

@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapperRegister;
@@ -18,9 +19,10 @@ using OrderRoutes = OrderApi.Contracts.V1;
 
 namespace OrderApi.IntegrationTest
 {
-    public abstract class IntegrationTestBase
+    public abstract class IntegrationTestBase : IDisposable
     {
         protected readonly HttpClient TestClient;
+        private readonly IServiceProvider serviceProvider;
 
         protected IntegrationTestBase()
         {
@@ -46,7 +48,15 @@ namespace OrderApi.IntegrationTest
                     });
                 });
 
+            serviceProvider = webappFactory.Services;
             TestClient = webappFactory.CreateClient();
+        }
+
+        public void Dispose()
+        {
+            using var serviceScope = serviceProvider.CreateScope();
+            var userDbContext = serviceScope.ServiceProvider.GetService<UserDbContext>();
+            userDbContext.Database.EnsureDeleted();
         }
 
         protected async Task AuthenticateAsync()

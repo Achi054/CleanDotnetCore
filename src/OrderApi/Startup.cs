@@ -40,6 +40,11 @@ namespace OrderApi
             services.AddValidators();
 
             services.AddCosmosDb(Configuration);
+
+            services.AddAuthorization(configure =>
+            {
+                configure.AddPolicy("CanDelete", configurePolicy => configurePolicy.RequireClaim("order.delete", "true"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

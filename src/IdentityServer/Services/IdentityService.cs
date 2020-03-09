@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -100,9 +101,10 @@ namespace IdentityServer.Services
                 {
                     Errors = new[] { "User already exists" }
                 };
-
+            var userId = Guid.NewGuid();
             var newUser = new IdentityUser
             {
+                Id = userId.ToString(),
                 UserName = name,
                 Email = email
             };
@@ -114,21 +116,29 @@ namespace IdentityServer.Services
                     Errors = createdUser.Errors.Select(x => x.Description)
                 };
 
+            await _userManager.AddClaimAsync(newUser, new Claim("order.delete", "true"));
+
             return await GetUserAuthenticationInfoAsync(newUser);
         }
 
         private async Task<AuthenticationResult> GetUserAuthenticationInfoAsync(IdentityUser newUser)
         {
             var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
+
+            var claims = new List<Claim>
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, newUser.Email),
                     new Claim(JwtRegisteredClaimNames.Email, newUser.Email),
                     new Claim(JwtRegisteredClaimNames.NameId, newUser.Id),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                }),
+                };
+
+            var userClaims = await _userManager.GetClaimsAsync(newUser);
+            claims.AddRange(userClaims);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.Add(_jwtSettings.TokenLifetime),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
