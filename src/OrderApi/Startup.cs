@@ -1,3 +1,4 @@
+using AuthorizationRegister;
 using AutoMapperRegister;
 using DependencyRegister;
 using MediatrRegister;
@@ -41,10 +42,7 @@ namespace OrderApi
 
             services.AddCosmosDb(Configuration);
 
-            services.AddAuthorization(configure =>
-            {
-                configure.AddPolicy("CanDelete", configurePolicy => configurePolicy.RequireClaim("order.delete", "true"));
-            });
+            services.AddCustomAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

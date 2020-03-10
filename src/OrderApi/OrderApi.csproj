@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AuthorizationRegister\AuthorizationRegister.csproj" />
     <ProjectReference Include="..\AutoMapper\AutoMapperRegister.csproj" />
     <ProjectReference Include="..\DependencyRegister\DependencyRegister.csproj" />
     <ProjectReference Include="..\MediatrRegister\MediatrRegister.csproj" />

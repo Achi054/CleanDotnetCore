@@ -65,7 +65,8 @@ namespace OrderApi.Controllers
         }
 
         [HttpDelete(ApiRoutes.Order.Delete)]
-        [Authorize("CanDelete")]
+        //[Authorize("CanDelete")]
+        [Authorize(Policy = "WorkingInCompany")]
         public async Task<IActionResult> Delete(int id)
         {
             var query = new DeleteOrderCommand(id);
