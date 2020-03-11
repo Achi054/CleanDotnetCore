@@ -96,10 +96,10 @@ namespace OrderApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete(ApiRoutes.Order.Delete)]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         //[Authorize("CanDelete")]
         [Authorize(Policy = "WorkingInCompany")]
+        [HttpDelete(ApiRoutes.Order.Delete)]
         public async Task<IActionResult> Delete(int id)
         {
             var query = new DeleteOrderCommand(id);
