@@ -1,16 +1,21 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace SecurityRegister
 {
     public static class Registry
     {
-        public static void AddSwagger(this IServiceCollection services)
+        public static void AddSwagger<T>(this IServiceCollection services) where T : class
         {
             services.AddSwaggerGen(opts =>
             {
                 opts.SwaggerDoc("v1", new OpenApiInfo { Title = "eCommerce API", Version = "V1" });
+
+                opts.ExampleFilters();
 
                 var security = new OpenApiSecurityScheme
                 {
@@ -32,7 +37,11 @@ namespace SecurityRegister
                     }
                 };
                 opts.AddSecurityRequirement(securityRequirement);
+
+                opts.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
             });
+
+            services.AddSwaggerExamplesFromAssemblyOf<T>();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Domain.EFCoreEntities;
@@ -25,7 +26,12 @@ namespace OrderApi.Controllers
         public OrderApiController(ILogger<OrderApiController> logger, IMediator mediator, IMapper mapper)
             => (_logger, _mediator, _mapper) = (logger, mediator, mapper);
 
+        /// <summary>
+        /// Returns list of Orders
+        /// </summary>
+        /// <returns>Returns list of Orders</returns>
         [HttpGet(ApiRoutes.Order.Get)]
+        [ProducesResponseType(typeof(List<OrderDetails>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Get()
         {
             var query = new GetAllOrdersQuery();
@@ -33,6 +39,13 @@ namespace OrderApi.Controllers
             return Ok(_mapper.Map<IEnumerable<OrderDetails>>(result));
         }
 
+        /// <summary>
+        /// Returns Order based on Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Order Details</returns>
+        [ProducesResponseType(typeof(OrderDetails), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [HttpGet(ApiRoutes.Order.GetById)]
         public async Task<IActionResult> Get(int id)
         {
@@ -45,6 +58,12 @@ namespace OrderApi.Controllers
             return Ok(_mapper.Map<OrderDetails>(result));
         }
 
+        /// <summary>
+        /// Creates order
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns>Created Order id</returns>
+        [ProducesResponseType((int)HttpStatusCode.Created)]
         [HttpPost(ApiRoutes.Order.Create)]
         public async Task<IActionResult> Create(OrderDetails order)
         {
@@ -53,6 +72,14 @@ namespace OrderApi.Controllers
             return CreatedAtAction("Get", new { id = result.Id }, result);
         }
 
+        /// <summary>
+        /// Updates the order
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="order"></param>
+        /// <returns>Order details</returns>
+        [ProducesResponseType(typeof(OrderDetails), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [HttpPut(ApiRoutes.Order.Update)]
         public async Task<IActionResult> Update(int id, OrderDetails order)
         {
@@ -64,7 +91,13 @@ namespace OrderApi.Controllers
             return Ok(_mapper.Map<OrderDetails>(result));
         }
 
+        /// <summary>
+        /// Delete order based on id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete(ApiRoutes.Order.Delete)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         //[Authorize("CanDelete")]
         [Authorize(Policy = "WorkingInCompany")]
         public async Task<IActionResult> Delete(int id)

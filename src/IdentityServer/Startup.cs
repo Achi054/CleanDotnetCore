@@ -60,7 +60,7 @@ namespace IdentityServer
                     configureOptions.TokenValidationParameters = tokenParameters;
                 });
 
-            services.AddSwagger();
+            services.AddSwagger<Startup>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

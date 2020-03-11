@@ -26,7 +26,7 @@ namespace OrderApi
         {
             services.AddHttpClient();
 
-            services.AddSwagger();
+            services.AddSwagger<Startup>();
 
             services.AddControllers();
 
