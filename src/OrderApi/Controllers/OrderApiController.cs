@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OrderApi.Contracts.V1;
+using OrderApi.Filters;
 using OrderApi.Models;
 using OrderService.Commands;
 using OrderService.Queries;
@@ -32,6 +33,7 @@ namespace OrderApi.Controllers
         /// <returns>Returns list of Orders</returns>
         [HttpGet(ApiRoutes.Order.Get)]
         [ProducesResponseType(typeof(List<OrderDetails>), (int)HttpStatusCode.OK)]
+        [Cache(600)]
         public async Task<IActionResult> Get()
         {
             var query = new GetAllOrdersQuery();
@@ -47,6 +49,7 @@ namespace OrderApi.Controllers
         [ProducesResponseType(typeof(OrderDetails), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [HttpGet(ApiRoutes.Order.GetById)]
+        [Cache(600)]
         public async Task<IActionResult> Get(int id)
         {
             var query = new GetOrderByIdQuery(id);

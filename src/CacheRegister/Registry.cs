@@ -1,5 +1,8 @@
 ﻿using Domain.EFCoreEntities;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OrderApi.Options;
+using OrderApi.Services;
 using Repository.Contracts;
 using Repository.EntityFramework.Cached;
 
@@ -7,7 +10,21 @@ namespace CacheRegister
 {
     public static class Registry
     {
-        public static void AddCacheDependencies(this IServiceCollection services)
-            => services.Decorate<IOrderRepository<Order>, CachedOrderRepository>();
+        public static void AddCacheDependencies(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Decorate<IOrderRepository<Order>, CachedOrderRepository>();
+
+            //Redis Cache registry
+            var redisCacheSettings = new RedisCacheSettings();
+            configuration.GetSection(nameof(RedisCacheSettings)).Bind(redisCacheSettings);
+
+            if (!redisCacheSettings.Enabled)
+                return;
+
+            services.AddStackExchangeRedisCache(setupAction => setupAction.Configuration = redisCacheSettings.ConnectionString);
+
+            services.AddSingleton(redisCacheSettings);
+            services.AddSingleton<IResponseCacheService, ResponseCacheService>();
+        }
     }
 }
