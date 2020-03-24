@@ -16,6 +16,7 @@
     <ProjectReference Include="..\AuthorizationRegister\AuthorizationRegister.csproj" />
     <ProjectReference Include="..\AutoMapper\AutoMapperRegister.csproj" />
     <ProjectReference Include="..\DependencyRegister\DependencyRegister.csproj" />
+    <ProjectReference Include="..\HealthCheckRegister\HealthCheckRegister.csproj" />
     <ProjectReference Include="..\MediatrRegister\MediatrRegister.csproj" />
     <ProjectReference Include="..\OrderService\OrderService.csproj" />
     <ProjectReference Include="..\SecurityRegister\SwaggerRegister.csproj" />
